@@ -1,4 +1,124 @@
-body {
-    background-color: blue;
-    color: white;
-}
+/* Reset some default styles */
+body, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  /* Set background and text colors */
+  body {
+    background-color: #e9e9e9;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Game container */
+  #game-container {
+    display: flex;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0px 0px 0px 0px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+  }
+  
+  /* Title */
+  .title {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: brown;
+  }
+  
+  /* Instructions */
+  #instructions {
+    background-color: #272727;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  #instructions h3 {
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  #instructions p {
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  
+  #instructions ol {
+    color: #fff;
+    margin-left: 20px;
+  }
+  
+  #instructions li {
+    margin-bottom: 10px;
+  }
+  
+  /* Gameplay area */
+  #game-area {
+    display: flex;
+    margin: 0px 0px 10px 10px
+  }
+  
+  .adventurer {
+    flex-grow: 1;
+    background-color: #8c8c8c;
+    padding: 20px;
+    margin: 10px 10px 10px 10px;
+    height: 700px; /* Added height property */
+    width: 350px;
+    justify-content: left;
+  }
+
+  .ogre {
+    flex-grow: 1;
+    background-color: #8c8c8c;
+    padding: 20px;
+    margin: 10px 10px 10px 10px;
+    height: 700px; /* Added height property */
+    width: 350px;
+  }
+  
+  
+  .adventurer h3, .ogre h3 {
+    color: #fff;
+    font-size: 24px;
+    margin: 50px 0px 0px 50px;
+    text-align: center;
+  }
+  
+  .health-bar {
+    width: 100%;
+    background-color: #555;
+    height: 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .health-fill {
+    width: 100%;
+    background-color: #7ac142;
+    height: 100%;
+    border-radius: 10px;
+  }
+  
+  button {
+    background-color: #555;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  button:hover {
+    background-color: #7ac142;
+  }
+  
+  

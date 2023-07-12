@@ -3,12 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello</title>
+    <title>Ogre Battle Game</title>
     <link rel="stylesheet" href="CSS/styles.css">
+    <script src="JS/app.js"></script>
 </head>
 <body>
-    <script src="JS/app.js"></script>
-    <div> Hello</div>
-    
+    <div id="game-container">
+        <h1 class="title">Ogre Battle</h1>
+        <button id="instructions-toggle">Instructions</button>
+        <div id="game-content">
+            <div id="instructions" style="display: none;">
+                <h3>-- Adventure's Handbook --</h3>
+                <p>Use these tips to fight effectively and not get killed!</p>
+                <ol>
+                    <li>Health: Keep track of your health and the Ogre's. Remember, if your health reaches 0, you lose!</li>
+                    <li>Damage: How much health is deducted when a hit is landed.</li>
+                    <li>Attack: Swing your weapon to damage the Ogre.</li>
+                    <li>Defend: Reduce 100% of the damage of the next attack.</li>
+                    <li>Power Attack: Will deal more damage than a normal attack. Beware of the Ogre's Power Attack!</li>
+                </ol>
+            </div>
+            <div id="game-area">
+                <div class="adventurer">
+                    <h3>Adventurer</h3>
+                    <div class="health-bar">
+                        <div class="health-fill" id="player-health"></div>
+                    </div>
+                    <button id="attack-btn">Attack</button>
+                    <button id="defend-btn">Defend</button>
+                </div>
+                <div class="ogre">
+                    <h3>Ogre</h3>
+                    <div class="health-bar">
+                        <div class="health-fill" id="ogre-health"></div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        const instructionsToggle = document.getElementById('instructions-toggle');
+        const instructions = document.getElementById('instructions');
+        
+        instructionsToggle.addEventListener('click', () => {
+            instructions.style.display = instructions.style.display === 'none' ? 'block' : 'none';
+        });
+    </script>
 </body>
 </html>
+
+
