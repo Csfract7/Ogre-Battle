@@ -1,4 +1,4 @@
-/* Reset some default styles */
+/* Reset some default styles  */
 body, ul, li {
     margin: 0;
     padding: 0;
@@ -34,6 +34,7 @@ body, ul, li {
   
   /* Instructions */
   #instructions {
+    
     background-color: #272727;
     padding: 20px;
     margin-bottom: 20px;
@@ -62,31 +63,47 @@ body, ul, li {
   /* Gameplay area */
   #game-area {
     display: flex;
-    margin: 0px 0px 10px 10px
+    -ms-flex-align: start;
+    margin: 0px 0px 0px 0px;
   }
   
   .adventurer {
+    background-image: url(../Assets/Nobackgroundknightflipped.png),url(../Assets/forest-game-background-free-vector.jpg);
+    background-repeat: no-repeat;
     flex-grow: 1;
     background-color: #8c8c8c;
+    background-position: center;
+    background-position: bottom;
     padding: 20px;
     margin: 10px 10px 10px 10px;
-    height: 700px; /* Added height property */
+    height: 700px; /* Added height property to make box take up the whole screen */
     width: 350px;
-    justify-content: left;
   }
 
   .ogre {
+    background-image: url(../Assets/Transaparent_Ogre-removebg-preview.png),url(../Assets/forest-game-background-free-vector.jpg);
+    background-repeat: no-repeat;
+    background-size: fill;
     flex-grow: 1;
     background-color: #8c8c8c;
+    background-position: center;
+    background-position: bottom;
     padding: 20px;
     margin: 10px 10px 10px 10px;
-    height: 700px; /* Added height property */
+    height: 700px; /* Added height property to make box take up the whole screen*/
     width: 350px;
   }
   
   
-  .adventurer h3, .ogre h3 {
-    color: #fff;
+  .adventurer h3 {
+    color: #1556ce;
+    font-size: 24px;
+    margin: 50px 0px 0px 50px;
+    text-align: center;
+  }
+
+  .ogre h3 {
+    color: #dd431c;
     font-size: 24px;
     margin: 50px 0px 0px 50px;
     text-align: center;

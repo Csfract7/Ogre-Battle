@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ogre Battle Game</title>
     <link rel="stylesheet" href="CSS/styles.css">
-    <script src="JS/app.js"></script>
+    
 </head>
 <body>
     <div id="game-container">
@@ -20,7 +20,7 @@
                     <li>Damage: How much health is deducted when a hit is landed.</li>
                     <li>Attack: Swing your weapon to damage the Ogre.</li>
                     <li>Defend: Reduce 100% of the damage of the next attack.</li>
-                    <li>Power Attack: Will deal more damage than a normal attack. Beware of the Ogre's Power Attack!</li>
+                    <li>Power Attack: Will deal more damage than a normal attack, but it takes a turn to charge.  Beware of the Ogre's Power Attack!</li>
                 </ol>
             </div>
             <div id="game-area">
@@ -30,6 +30,7 @@
                         <div class="health-fill" id="player-health"></div>
                     </div>
                     <button id="attack-btn">Attack</button>
+                    <button id="power-attack-btn">Power Attack</button>
                     <button id="defend-btn">Defend</button>
                 </div>
                 <div class="ogre">
@@ -42,14 +43,7 @@
             
         </div>
     </div>
-    <script>
-        const instructionsToggle = document.getElementById('instructions-toggle');
-        const instructions = document.getElementById('instructions');
-        
-        instructionsToggle.addEventListener('click', () => {
-            instructions.style.display = instructions.style.display === 'none' ? 'block' : 'none';
-        });
-    </script>
+    <script src="JS/app.js"></script>
 </body>
 </html>
 
