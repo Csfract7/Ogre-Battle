@@ -1,4 +1,3 @@
-
 console.log('Hello');
 
 // Initializations DOM Variables
@@ -15,8 +14,10 @@ let instructions = document.querySelector('#instructions');
 // Game area
 let gameArea = document.querySelector('#game-area');
 // Health Bars
-let healthBarAdventurer = document.querySelector('#player-health')
-let healthBarOgre = document.querySelector('#ogre-health')
+let healthBarAdventurer = document.querySelector('#player-health');
+let healthBarOgre = document.querySelector('#ogre-health');
+// Adventurer Name
+let adventurerName = document.querySelector('#adventurer-name');
 
 // Health Bars
 const updateHealthBar = (bar, health) => {
@@ -42,7 +43,6 @@ class Adventurer {
   constructor(name, health = 1000) {
     this.name = name;
     this.health = health; // max 1000
-    this.win = false;
     this.loss = false;
     this.weapon = {
       sword: 20,
@@ -59,7 +59,6 @@ class Adventurer {
     if (choice === 'Defend') {
       return this.defend();
     }
-    this.health();
   }
 
   attack() {
@@ -91,7 +90,9 @@ class Adventurer {
   }
 }
 
-const adventurer = new Adventurer('Greg'); // Prompt for the adventurer's name
+// Prompt for the adventurer's name
+const adventurerNameInput = prompt('Enter the adventurer name:');
+const adventurer = new Adventurer(adventurerNameInput);
 
 // Create an Ogre Class:
 class Ogre {
@@ -99,7 +100,6 @@ class Ogre {
     this.name = name;
     this.health = health; // max 1000
     this.win = false;
-    this.loss = false;
     this.weapon = {
       club: 40,
     };
@@ -137,8 +137,11 @@ class Ogre {
   }
 }
 
+const gameLoop = setInterval(() => {
+  game();
+}, 1000); 
+
 const ogre = new Ogre('Gronk');
-ogre.decision();
 
 // Add event listener to toggle instructions
 
@@ -149,6 +152,49 @@ instructionsToggle.addEventListener('click', () => {
     instructions.style.display = 'none';
   }
 });
+
+//Global Functions
+
+const checkWin = () => {
+  adventurer.win = true;
+  if (adventurer.win) {
+    clearInterval(gameLoop);
+    alert('Congratulations, You have slain the Ogre!');
+  }
+  adventurer.win = false;
+};
+
+const checkLoss = () => {
+  ogre.loss = true;
+  if (ogre.loss) {
+    clearInterval(gameLoop);
+    alert('You have been slain by the Ogre!');
+  }
+  ogre.loss = false;
+};
+
+const game = () => {
+  if (adventurer.health <= 0) {
+    checkLoss();
+    return;
+  } else if (ogre.health <= 0) {
+    checkWin();
+    return;
+  }
+
+  playersTurn();
+  setTimeout(() => {
+    ogresTurn();
+  }, 1000); // Introduce a 1-second delay before the Ogre's turn
+};
+
+const playersTurn = () => {
+  adventurer.decision();
+};
+
+const ogresTurn = () => {
+  ogre.decision();
+};
 
 // Buttons
 
@@ -161,6 +207,30 @@ defendBtn.addEventListener('click', () => {
 powerAttackBtn.addEventListener('click', () => {
   adventurer.decision('Power Attack');
 });
+
+// Set adventurer's name in the HTML
+adventurerName.innerText = adventurer.name;
+
+game(); // Start the game
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
