@@ -14,6 +14,24 @@ let instructionsToggle = document.querySelector('#instructions-toggle');
 let instructions = document.querySelector('#instructions');
 // Game area
 let gameArea = document.querySelector('#game-area');
+// Health Bars
+let healthBarAdventurer = document.querySelector('#player-health')
+let healthBarOgre = document.querySelector('#ogre-health')
+
+// Health Bars
+const updateHealthBar = (bar, health) => {
+  const maxHealth = 3000; // Max health value for the ogre
+  const healthPercentage = (health / maxHealth) * 100;
+  bar.style.width = `${healthPercentage}%`;
+
+  if (healthPercentage > 75) {
+    bar.style.backgroundColor = 'green';
+  } else if (healthPercentage > 30) {
+    bar.style.backgroundColor = 'yellow';
+  } else {
+    bar.style.backgroundColor = 'red';
+  }
+};
 
 // Create variables instructionsToggle and instructions.
 // Use querySelector to select the corresponding elements by their IDs.
@@ -48,32 +66,33 @@ class Adventurer {
     console.log('I hit you!');
     let damage = this.weapon.sword;
     console.log(damage);
-    return damage;
+    ogre.takeDamage(damage);
   }
 
   powerAttack() {
     console.log('I hit you REALLY HARD!');
     let damage = this.weapon.sword * 3;
     console.log(damage);
-    return damage;
+    ogre.takeDamage(damage);
   }
 
   defend() {
     console.log("I'm defending!");
-    let damage = ogre.damage - ogre.damage;
-    return damage;
+    let damage = ogre.weapon.club - ogre.weapon.club;
+    ogre.takeDamage(damage);
   }
 
-  health() {
-    this.health = this.health - damage;
-    console.log(this.health);
+  takeDamage(damage) {
+    this.health -= damage;
+    if (this.health < 0) {
+      this.health = 0;
+    }
+    updateHealthBar(healthBarAdventurer, this.health);
   }
 }
 
 const adventurer = new Adventurer('Greg'); // Prompt for the adventurer's name
 
-// Include properties such as health, damage, and attack methods.
-// Implement necessary functions and methods for player actions.
 // Create an Ogre Class:
 class Ogre {
   constructor(name, health = 3000) {
@@ -99,30 +118,27 @@ class Ogre {
     console.log('I hit you!');
     let damage = this.weapon.club;
     console.log(damage);
-    return damage;
+    adventurer.takeDamage(damage);
   }
 
   powerAttack() {
     console.log('I hit you REALLY HARD!');
     let damage = this.weapon.club * 3;
     console.log(damage);
-    return damage;
+    adventurer.takeDamage(damage);
   }
 
-  health() {
-    this.health = this.health - damage;
-    console.log(this.health);
+  takeDamage(damage) {
+    this.health -= damage;
+    if (this.health < 0) {
+      this.health = 0;
+    }
+    updateHealthBar(healthBarOgre, this.health);
   }
 }
 
 const ogre = new Ogre('Gronk');
 ogre.decision();
-
-// Define a class for the ogre enemy.
-// Include properties such as health, damage, and attack methods.
-// Implement necessary functions and methods for ogre actions.
-
-// Get the elements
 
 // Add event listener to toggle instructions
 
@@ -145,6 +161,7 @@ defendBtn.addEventListener('click', () => {
 powerAttackBtn.addEventListener('click', () => {
   adventurer.decision('Power Attack');
 });
+
 
 
 
