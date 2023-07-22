@@ -2,7 +2,7 @@
 A single player fighting game with an adventurer and an ogre
 
 Early Concept
-[Title](Assets/Ogre-Battle---Wireframe-cc-Premium1688229270.pdf)
+[WireFrame](Assets/Ogre-Battle---Wireframe-cc-Premium1688229270.pdf)
 
 Gameplay
 ![!\[Alt text\](Orge_Battle_Gameplay.png)](Assets/Orge_Battle_Gameplay.png)
