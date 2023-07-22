@@ -261,7 +261,7 @@ nameToggle.addEventListener('click', () => {
     adventurerNameElem.innerText = adventurerNameInput;
     adventurer.name = adventurerNameInput;
   }
-  game();
+  gameLoop();
   
 });
 
