@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ogre Battle Game</title>
     <link rel="stylesheet" href="CSS/styles.css">
-    
 </head>
 <body>
     <div id="game-container">
         <h1 class="title">Ogre Battle</h1>
+        <button id="name-toggle"> Enter your Adventurer's Name </button>
         <button id="instructions-toggle">Instructions</button>
         <div id="game-content">
+            <div id="name" style="display: none;">
+                <input type="text" id="newName" placeholder="Enter your name here"> 
+            </div>
             <div id="instructions" style="display: none;">
                 <h3>-- Adventure's Handbook --</h3>
                 <p>Use these tips to fight effectively and not get killed!</p>
@@ -19,13 +22,21 @@
                     <li>Health: Keep track of your health and the Ogre's. Remember, if your health reaches 0, you lose!</li>
                     <li>Damage: How much health is deducted when a hit is landed.</li>
                     <li>Attack: Swing your weapon to damage the Ogre.</li>
-                    <li>Defend: Reduce 100% of the damage of the next attack.</li>
+                    <li>Defend: Stanch your wounds against the Ogre's attacks.</li>
                     <li>Power Attack: Will deal more damage than a normal attack, but it takes a turn to charge.  Beware of the Ogre's Power Attack!</li>
                 </ol>
             </div>
+            <aside>
+                <div id="Win" style="display: none;">
+                    Congratulations, You have slain the Ogre!
+                </div>
+                <div id="Loss" style="display: none;">
+                    You have been slain by the Ogre!
+                </div>
+            </aside>
             <div id="game-area">
                 <div class="adventurer">
-                    <h3>Adventurer</h3>
+                    <h3 id="adventurer-name">Adventurer</h3>
                     <div class="health-bar">
                         <div class="health-fill" id="player-health"></div>
                     </div>
@@ -40,11 +51,12 @@
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
     <script src="JS/app.js"></script>
 </body>
 </html>
+
+
 
 
