@@ -130,7 +130,7 @@ const adventurer = new Adventurer(adventurerNameInput);
 class Ogre {
   constructor(name, health = 3000) {
     this.name = name;
-    this.health = health; // max 1000
+    this.health = health; // max 3000
     this.win = false;
     this.weapon = {
       club: 40,
@@ -172,9 +172,18 @@ class Ogre {
 }
 
 
-const gameLoop = setInterval(() => {
-  game();
-}, 500);
+// Timers 
+
+const gameLoop = setTimeout(() => {
+  startGame();
+}, 7000);
+
+const startGame = () => {
+  setInterval(() => {
+    game();
+  }, 500);
+};
+
 
 
 const ogre = new Ogre('Gronk');
@@ -185,7 +194,7 @@ const checkWin = () => {
   adventurer.win = true;
   let winMsg = win
   if (adventurer.win) {
-    clearInterval(gameLoop);
+    clearInterval(startGame);
     winMsg.style.display = "block"
   }
   adventurer.health += 1000
@@ -196,7 +205,7 @@ const checkLoss = () => {
   ogre.loss = true;
   let lossMsg = loss
   if (ogre.loss) {
-    clearInterval(gameLoop);
+    clearInterval(startGame);
     lossMsg.style.display = "block"  
   }
   ogre.loss = false;
@@ -214,7 +223,7 @@ const game = () => {
   playersTurn();
   setTimeout(() => {
     ogresTurn();
-  }, 1000); // Introduce a 1-second delay before the Ogre's turn
+  }, 7000); // Introduce a 1-second delay before the Ogre's first turn
 };
 
 const playersTurn = () => {
@@ -261,7 +270,6 @@ nameToggle.addEventListener('click', () => {
     adventurerNameElem.innerText = adventurerNameInput;
     adventurer.name = adventurerNameInput;
   }
-  gameLoop();
   
 });
 
