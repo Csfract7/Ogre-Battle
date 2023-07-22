@@ -1,3 +1,5 @@
+console.log('Hello');
+
 // Initializations DOM Variables
 
 let attackBtn = document.querySelector('#attack-btn');
@@ -9,8 +11,10 @@ let gameContainer = document.querySelector('#game-container');
 
 // Name Toggle
 let nameToggle = document.querySelector('#name-toggle');
-let nameInputDiv = document.querySelector('#name');
+let nameA = document.querySelector('#name');
+let newNameInput = document.querySelector('#newName');
 let adventurerNameElem = document.querySelector('#adventurer-name');
+
 
 // Instructions
 let instructionsToggle = document.querySelector('#instructions-toggle');
@@ -20,6 +24,8 @@ let gameArea = document.querySelector('#game-area');
 // Health Bars
 let healthBarAdventurer = document.querySelector('#player-health');
 let healthBarOgre = document.querySelector('#ogre-health');
+// Adventurer Name
+let adventurerName = document.querySelector('#adventurer-name');
 
 // Win Message
 let win = document.querySelector('#Win')
@@ -41,9 +47,8 @@ const updateHealthBarOgre = (bar, health) => {
     bar.style.backgroundColor = 'red';
   }
 }
-
-const updateHealthBarAdventurer = (bar, health) => {
-  const maxHealth = 1000; // Max health value for the adventurer
+  const updateHealthBarAdventurer = (bar, health) => {
+  const maxHealth = 1000; // Max health value for the ogre
   const healthPercentage = (health / maxHealth) * 100;
   bar.style.width = `${healthPercentage}%`;
     
@@ -55,6 +60,9 @@ const updateHealthBarAdventurer = (bar, health) => {
     bar.style.backgroundColor = 'red';
   }
 }
+// Create variables instructionsToggle and instructions.
+// Use querySelector to select the corresponding elements by their IDs.
+// Create a Player Class:
 
 // Define a class for the player character.
 class Adventurer {
@@ -114,21 +122,9 @@ class Adventurer {
   }
 }
 
-// Function to initialize the game when the adventurer's name is entered
-const initializeGame = () => {
-  // Get the adventurer's name from the input field
-  const adventurerNameInput = newName.value.trim();
-  if (adventurerNameInput !== '') {
-    // Hide the name input and update the adventurer's name
-    nameInputDiv.style.display = 'none';
-    adventurerNameElem.innerText = adventurerNameInput;
-    
-    // Start the game loop
-    const gameLoop = setInterval(() => {
-      game();
-    }, 500); 
-  }
-}
+// Prompt for the adventurer's name
+const adventurerNameInput = adventurerNameElem.innerText
+const adventurer = new Adventurer(adventurerNameInput);
 
 // Create an Ogre Class:
 class Ogre {
@@ -175,7 +171,13 @@ class Ogre {
   }
 }
 
-let ogre;
+
+const gameLoop = setInterval(() => {
+  game();
+}, 500);
+
+
+const ogre = new Ogre('Gronk');
 
 //Global Functions
 
@@ -244,16 +246,33 @@ instructionsToggle.addEventListener('click', () => {
 });
 
 nameToggle.addEventListener('click', () => {
-  if (nameInputDiv.style.display === 'none') {
-    nameInputDiv.style.display = 'block';
-  } else {
-    nameInputDiv.style.display = 'none';
+  if (nameA.style.display === 'none') {
+    nameA.style.display = 'block';
+  }
+  else {
+    nameA.style.display = 'none';
+  }
+
+  const adventurerNameInput = newNameInput.value.trim();
+  if (adventurerNameInput !== '') {
+    // Hide the name input and update the adventurer's name
+    
+    nameA.style.display = 'none';
+    adventurerNameElem.innerText = adventurerNameInput;
+    adventurer.name = adventurerNameInput;
   }
   game();
+  
 });
 
-// Event listener to start the game after entering the adventurer's name
-nameToggle.addEventListener('click', initializeGame);
+
+
+
+game(); // Start the game
+
+
+
+
 
 
 
